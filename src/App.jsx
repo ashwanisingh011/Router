@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -7,19 +6,32 @@ import {
 // Routes
 import Dashboard, { dashboardLoader } from './pages/Dashboard';
 import Error from './pages/Error';
+import Main, { mainLoader } from "./layout/Main";
 
 let router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard/>,
-    loader: dashboardLoader,
+    element: <Main/>,
+    loader: mainLoader,
+    children: [
+      {
+        path: "/",
+        element: <Dashboard/>,
+        loader: dashboardLoader,
+      },
+      {
+        path: "logout",
+        action: logoutAction,
+      }
+    ]
   },
   {
     path: "*",
     element: <Error/>
   },  
-  
 ]);
+      
+  
 
 function App() {
   return (
