@@ -33,6 +33,7 @@ function AddBudgetForm() {
                 inputMode='decimal' // This will show the decimal keyboard on mobile devices.
                 />
             </div>
+            <input type="hidden" name='_action' value='createBudget' />
             <button 
                 type='submit'
                 className='btn btn--dark'
